@@ -14,6 +14,11 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests/Users',
+   timeout: 30000, // Test timeout: 30 seconds
+
+    expect: {
+        timeout: 10000 // Assertion timeout: 10 seconds
+    },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -31,7 +36,10 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+   // video: 'retain-on-failure',
   },
+ 
+    
 
   /* Configure projects for major browsers */
   projects: [
@@ -45,11 +53,11 @@ export default defineConfig({
       use: { ...devices['Desktop Firefox'] },
     },
 
-    {
+    /* {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
-
+ */
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
@@ -61,10 +69,10 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
+    {
+       name: 'Microsoft Edge',
+       use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    },
     // {
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },

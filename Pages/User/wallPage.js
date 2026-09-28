@@ -8,6 +8,24 @@ export class wallPage {
         this.wallTitle = page.getByRole('tab', {
             name: 'Wall',
             exact: true});
+        this.performance = page.getByRole('tab', {
+            name: 'Performance',
+            exact: true});
+        this.buzz = page.getByRole('tab', {
+            name: 'Buzz',
+            exact: true });
+        this.survey = page.getByRole('tab', {
+            name: 'Survey',
+            exact: true });
+        this.board = page.getByRole('tab', {
+            name: 'Board',
+            exact: true });
+        this.incentives = page.getByRole('tab', {
+            name: 'Incentives',
+            exact: true });
+        this.chat = page.getByRole('tab', {
+            name: 'Chat',
+            exact: true });
         this.allTab = page.getByRole('tab', {
             name: 'All',
             exact: true
@@ -28,7 +46,15 @@ export class wallPage {
             exact: true
         });
     }
-
+    async verifyWallTabsDisplayed() {
+        await expect(this.wallTitle).toBeVisible();
+        await expect(this.performance).toBeVisible();
+        await expect(this.buzz).toBeVisible(); 
+        await expect(this.survey).toBeVisible();
+        await expect(this.board).toBeVisible();
+        await expect(this.incentives).toBeVisible();
+        await expect(this.chat).toBeVisible();
+    }
     async verifyWallPageDisplayed() {
         await expect(this.wallTitle).toBeVisible();
         await expect(this.allTab).toBeVisible();
@@ -43,6 +69,27 @@ export class wallPage {
 
         // Verify Field Voice is selected
         await expect(this.fieldVoiceTab).toHaveAttribute(
+            'aria-selected',
+            'true'
+        );
+        await this.learnHubTab.click();
+
+        // Verify LearnHub is selected
+        await expect(this.learnHubTab).toHaveAttribute(
+            'aria-selected',
+            'true'
+        );
+        await this.featuredTab.click();
+
+        // Verify Featured is selected
+        await expect(this.featuredTab).toHaveAttribute(
+            'aria-selected',
+            'true'
+        );
+    }
+    async verifyAllTabSelected() {
+        // Verify All tab is selected by default
+        await expect(this.allTab).toHaveAttribute(
             'aria-selected',
             'true'
         );
