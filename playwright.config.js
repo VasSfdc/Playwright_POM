@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
-/**
+/**Testing the changes are getting reflecting in the local
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
